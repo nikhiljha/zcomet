@@ -319,7 +319,7 @@ _zcomet_clone_repo() {
   [[ -d $repo_dir ]] && return
 
   print -P "%B%F{yellow}Cloning ${repo}:%f%b"
-  if ! command git clone ${clone_options} "https://${ZCOMET[GITSERVER]}/${repo}" "$repo_dir"; then
+  if ! command git clone ${clone_options} --depth 1 "https://${ZCOMET[GITSERVER]}/${repo}" "$repo_dir"; then
     ret=$?
     >&2 print "Could not clone repository ${repo}."
     return $ret
